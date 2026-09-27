@@ -1,78 +1,37 @@
-# AI-Powered Credit Risk Early Warning System
+# Credit Risk Early Warning | Analytics and ML Case Study
 
-## Project Overview
+An exploratory credit-risk case study using **Python, pandas, scikit-learn, and Power BI**. It compares several classifiers, creates a simple rule-based warning score, and presents risk segments in a dashboard.
 
-This project focuses on building an AI-powered Credit Risk Early Warning System using Python, Scikit-learn, and Power BI.
+This is a portfolio demonstration, **not a lending decision tool**. A model score should not be used to approve or deny credit without rigorous validation, fairness review, and appropriate governance.
 
-The system analyzes customer financial data, identifies potential risk indicators, predicts credit risk using machine learning models, and visualizes business insights through an interactive executive dashboard.
+## Dashboard
 
-The project combines data analytics, machine learning, feature engineering, and business intelligence to simulate a real-world banking risk monitoring solution.
+![Credit risk overview](Dashboard_main.png)
+![Risk detail table](Dashboard_table.png)
 
----
+Open [the Power BI file](Credit_analysis_project.pbix) in Power BI Desktop.
 
-## Tools & Technologies Used
+## What the code does
 
-* Python
-* Pandas
-* Scikit-learn
-* Matplotlib
-* Power BI
+1. Reads the included German Credit data and assigns column names.
+2. Explores class balance and numeric and categorical relationships.
+3. Creates three illustrative flags (credit amount above the sample median, duration above the sample median, and age under 30). Their sum forms a **hand-built warning score** with four bands. This score is separate from the trained classifiers.
+4. Compares logistic regression, random forest, and class-weighted versions using an 80/20 train/test split.
+5. Exports [the analysis dataset](final_credit_risk_dataset.csv) for the dashboard.
 
----
+See [credit_risk_analysis.py](credit_risk_analysis.py) for the actual implementation and [the supplied data file](german.data). The README previously reported 71% recall for risky customers using class-weighted logistic regression. Treat that as a recorded run, not a guaranteed reproducible result: the repository does not include saved predictions, full metrics, or an independent validation report.
 
-## Key Features
+## Run locally
 
-* Data cleaning and preprocessing
-* Exploratory Data Analysis (EDA)
-* Feature engineering and risk indicator creation
-* Custom Risk Warning Score system
-* Risk segmentation (Low, Moderate, High, Critical)
-* Logistic Regression and Random Forest models
-* Balanced Logistic Regression for improved risky-customer detection
-* Interactive Power BI dashboard
-* Conditional formatting and executive KPI reporting
+Install Python, pandas, Matplotlib, and scikit-learn. The current script uses `C:\credit_risk_analysis_project\Data` for input and a local Windows path for export. Set those paths to your checkout before running `python credit_risk_analysis.py`. It opens multiple interactive plots.
 
----
+## Evaluation and limitations
 
-## Machine Learning Models Used
+- The script prints accuracy, confusion matrices, and classification reports. Recall for the risky class matters, but review precision and false positives too.
+- Categorical encoding happens before the train/test split, and the script does not use a fitted preprocessing pipeline. Improve this before treating the result as a robust ML benchmark.
+- The simple warning thresholds are illustrative; they are not calibrated probabilities.
+- Document the data source and feature meanings, preserve a fixed evaluation dataset, and check subgroup performance before any real-world interpretation.
 
-* Logistic Regression
-* Random Forest Classifier
-* Balanced Random Forest
-* Balanced Logistic Regression
+## Skills shown
 
----
-
-## Key Business Insight
-
-Balanced Logistic Regression improved risky-customer recall to 71%, making it more suitable for financial early warning systems where detecting risky customers is more important than maximizing overall accuracy.
-
----
-
-## Dashboard Features
-
-* Customer risk distribution
-* Credit risk analysis
-* Average loan amount across risk segments
-* Employment-based risk analysis
-* Risk warning score monitoring
-* Predicted vs actual risk analysis
-* Interactive risk monitoring table
-
----
-
-## Dashboard Preview
-
-<img width="1435" height="805" alt="Dashboard_main" src="https://github.com/user-attachments/assets/6c02befc-f5ca-4815-bfe3-84b4ec3c37bf" />
-
----
-
-## Project Outcome
-
-This project strengthened practical skills in:
-
-* Machine Learning
-* Financial Risk Analytics
-* Business Intelligence
-* Dashboard Development
-* Data-Driven Decision Making
+Exploratory analysis, feature engineering, classification, class weighting, model comparison, and Power BI reporting.
